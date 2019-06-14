@@ -51,7 +51,8 @@ def main():
         # Back to text(lab)
         lab_text = postprocess(lab_text)
 
-    print(lab_text)
+    with open(args.output, 'w') as of:
+        of.write(lab_text)
 
 if __name__ == '__main__':
     main()
