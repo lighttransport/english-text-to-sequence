@@ -25,18 +25,24 @@ def postprocess(text):
     # Replace ',' with space
     text = text.replace(',', ' ')
 
+    # Strip white spaces in the beginning and the end of text.
+    text = text.strip()
+
+    # append line end
+    text += '\n'
+
     # uppercase
     text = text.upper()
 
     return text
 
 def main():
-        
+
     parser = argparse.ArgumentParser(description='English text to sequence.')
     parser.add_argument('input', help='Input text file')
     parser.add_argument('output', help='Output .lab file')
     parser.add_argument('--raw', dest='raw', action='store_true',
-                    help='Store raw sequence value')
+                    help='Output raw sequence(contain some non-alphabet characters. not an .lab compatible text)')
 
     args = parser.parse_args()
 
@@ -48,7 +54,7 @@ def main():
 
     lab_text = sequence_to_text(seq)
     if not args.raw:
-        # Back to text(lab)
+        # Remove non-alphabet character
         lab_text = postprocess(lab_text)
 
     with open(args.output, 'w') as of:

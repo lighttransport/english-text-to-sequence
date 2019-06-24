@@ -21,6 +21,10 @@ Assume input is ASCII text.
 $ python english-text-to-sequence.py input.txt output.lab
 ```
 
+### Options
+
+* `--raw` Output raw sequence(will contain non-alphabet characters)
+
 
 ### Third party license.
 
